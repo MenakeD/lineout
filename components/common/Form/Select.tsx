@@ -1,9 +1,9 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from 'react'
+import { DetailedHTMLProps, SelectHTMLAttributes } from 'react'
 import { FieldErrors, RegisterOptions } from 'react-hook-form'
 
 type Props = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
+  SelectHTMLAttributes<HTMLSelectElement>,
+  HTMLSelectElement
 > & {
   variant?: 'dark' | 'light'
   label: string
@@ -12,12 +12,12 @@ type Props = DetailedHTMLProps<
   errors?: FieldErrors
   register?: any
   registerOptions?: RegisterOptions
+  children: JSX.IntrinsicElements['option'] | JSX.IntrinsicElements['option'][]
 }
 
-const Input = ({
+const Select = ({
   variant = 'light',
   label,
-  type = 'text',
   name,
   register,
   registerOptions,
@@ -25,10 +25,11 @@ const Input = ({
   wrapperStyles,
   className,
   required = false,
+  children,
   ...rest
 }: Props) => {
   return (
-    <div role='input' className={`relative ${wrapperStyles} flex flex-col`}>
+    <div role='select' className={`relative ${wrapperStyles} flex flex-col`}>
       <label
         className={`text-sm md:text-base ${
           variant === 'light' ? 'text-offWhite' : 'text-gray-dark'
@@ -44,9 +45,8 @@ const Input = ({
           {required && '*'}
         </span>
       </label>
-      <input
+      <select
         id={name}
-        type={type}
         {...rest}
         className={`${className} py-2.5 px-3 ring-1 focus:ring-2 ${
           errors && errors[name] && errors[name]!.message
@@ -62,7 +62,10 @@ const Input = ({
               }`
         } rounded-lg transition ease-in outline-none`}
         {...register(name, registerOptions)}
-      />
+      >
+        <option value=''>Select one...</option>
+        {children}
+      </select>
       {errors && errors[name] && errors[name]!.message && (
         <p className={`absolute -bottom-4 right-0 text-xs text-red-400`}>
           {errors[name]!.message as string}
@@ -72,4 +75,4 @@ const Input = ({
   )
 }
 
-export default Input
+export default Select
