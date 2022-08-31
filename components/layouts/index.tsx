@@ -8,12 +8,10 @@ type Props = {
 
 const Layout = ({ children }: Props) => {
   return (
-    <>
+    <div className='antialiased min-h-screen bg-gray-dark'>
       <Header />
-      <main className='antialiased min-h-[95vh] bg-gray-dark'>
-        <Container>{children}</Container>
-      </main>
-    </>
+      <Container className='min-h-[90vh]'>{children}</Container>
+    </div>
   )
 }
 

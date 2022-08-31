@@ -8,6 +8,7 @@ type Props = DetailedHTMLProps<
   loading?: boolean
   children: ReactNode | string
   fullWidth?: boolean
+  className?: string
 }
 
 const Button = ({
@@ -16,6 +17,7 @@ const Button = ({
   children,
   variant = 'primary',
   fullWidth,
+  className,
   ...rest
 }: Props) => {
   return (
@@ -28,11 +30,11 @@ const Button = ({
           : `${
               loading || disabled ? 'text-yellow-dark' : 'text-yellow-main'
             } bg-gray-main`
-      } text-sm md:text-base font-bold py-2.5 px-4 rounded-lg shadow transition ease-in ${
+      } text-sm md:text-base font-extrabold py-2.5 px-4 rounded-lg shadow transition ease-in ${
         loading || disabled
           ? 'cursor-not-allowed bg-opacity-70'
           : 'cursor-pointer hover:bg-opacity-70'
-      }`}
+      } ${className}`}
       disabled={disabled || loading}
       {...rest}
     >
