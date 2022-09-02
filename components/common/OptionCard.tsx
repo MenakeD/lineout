@@ -10,9 +10,9 @@ const OptionCard = ({ Icon, Text }: Props) => {
   return (
     <div className='py-4 w-fit'>
       <div className='bg-gray-main rounded-lg cursor-pointer'>
-        <div className='flex flex-col justify-center space-y-3 py-4 px-2'>
+        <div className='flex flex-col justify-center space-y-3 py-6 px-5'>
           <div className='flex justify-center'>{Icon}</div>
-          <p className='text-white font-normal'>{Text}</p>
+          <p className='text-white font-normal flex justify-center'>{Text}</p>
         </div>
       </div>
     </div>
