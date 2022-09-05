@@ -4,6 +4,8 @@ import Container from '../components/layouts/Container'
 import { IoChatbubble } from 'react-icons/io5'
 import Input from '../components/common/Form/Input'
 import Form from '../components/common/Form'
+import OptionCard from '../components/common/OptionCard'
+import { AiOutlineQrcode } from 'react-icons/ai'
 
 const TestPage = () => {
   return (
@@ -23,6 +25,10 @@ const TestPage = () => {
             variant='dark'
           />
         </Form>
+        <OptionCard
+          Icon={<AiOutlineQrcode size={50} color='white' />}
+          Text='View QR code'
+        />
       </Container>
     </div>
   )
